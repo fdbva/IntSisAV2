@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using IntSisAV2.Models;
 using IntSisAV2.Services;
+using Microsoft.AspNet.Authentication.OAuth;
+using Microsoft.Extensions.WebEncoders;
 
 namespace IntSisAV2
 {
@@ -96,11 +98,12 @@ namespace IntSisAV2
                 options.AppId = Configuration["Authentication:Facebook:AppId"];
                 options.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
-
+            
             app.UseGoogleAuthentication(options =>
             {
                 options.ClientId = Configuration["Authentication:Google:ClientId"];
                 options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                
             });
 
             app.UseTwitterAuthentication(options =>
