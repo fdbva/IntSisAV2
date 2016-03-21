@@ -1,0 +1,44 @@
+@model IEnumerable<IntSisAV2.Models.Loja>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.LojaID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.LojaID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.LojaID">Delete</a>
+        </td>
+    </tr>
+}
+</table>
